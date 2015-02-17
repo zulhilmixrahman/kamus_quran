@@ -1,5 +1,6 @@
-# kamus_quran
-Kamus Quran
+# Kamus Quran
+
+This Mobile App in development progress
 
 Database in db/kamus_quran.sql
 
