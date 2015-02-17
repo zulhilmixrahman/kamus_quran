@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kamus Quran</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header">Senarai Surah</div>
+			<div role="main" class="ui-content">
+				<h3>Senarai Surah</h3>
+				<div>
+					<input type="text" name="carian" id="carian" placeholder="Carian Surah Quran"><br />
+					<ul id="senarai"></ul>
+				</div>
+			</div>
+			<script>
+			$(function(){
+				$('#first').click(function(){
+					window.location = "first.html";
+				});
+				
+				$('#second').on('click', function(){
+					window.location = "second.html";
+				});
+				
+				senarai_surah();
+				
+				$('#carian').on('keyup', function(data){
+					if($(this).val().length > 1){
+						senarai_surah($(this).val());
+					} else if ($(this).val().length > 0){
+						senarai_surah();
+					}
+				});
+			});
+			
+			function senarai_surah(val = ''){
+				$.ajax({
+					type: "POST",
+					url: "http://localhost/kamus_quran/api/components/senarai_surah",
+					data: {
+						surah: val
+					},
+					dataType: "json",
+					success: function(res){
+						if(res.success == true){
+							var li_list = '';
+							$.each(res.surah, function(i, item){
+								li_list += '<li><a href="surah.html?yourID=' + item.surah_id + '">' + item.surah_nama + '<a/></li>';
+							});
+							$('#senarai').html(li_list);
+						}
+					}
+				});
+			}
+			</script>
+		</div>
+	</body>
+</html>
