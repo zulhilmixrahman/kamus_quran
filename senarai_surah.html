@@ -11,12 +11,15 @@
 	</head>
 	<body>
 		<div data-role="page">
-			<div data-role="header">Kamus Quran</div>
+			<div data-role="header">Senarai Surah</div>
 			<div role="main" class="ui-content">
-				<button class="ui-btn ui-btn-b ui-icon-bullets ui-btn-icon-right" data-theme="b" onclick="jumpPage('senarai_surah')">Senarai Surah</button>
-				<button class="ui-btn ui-btn-b ui-icon-search ui-btn-icon-right" data-theme="b" onclick="jumpPage('carian')">Carian</button>
+				<h3>Senarai Surah</h3>
+				<div>
+					<input type="text" name="carian" id="carian" placeholder="Carian Surah Quran"><br />
+					<ul id="senarai"></ul>
+				</div>
 			</div>
-			<script src="js/components/index.js"></script>
+			<script src="js/components/senarai_surah.js"></script>
 		</div>
 	</body>
 </html>

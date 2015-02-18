@@ -1,0 +1,1 @@
+var pathAPI = 'http://localhost/kamus_quran/api/components/';
